@@ -1,37 +1,133 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="style.css">
-    <!-- <script src="https://vova-nik.github.io/get.borders/getborders.js"></script> -->
-    <title>SpringOne</title>
+    <title>Document</title>
 </head>
+
 <body>
-    <div class ="h1">Hello from spring</div>
-    <div class="content-wrapper">
-        <div class="btn-container">
-            <div class="button countries-btn">
-                Countries
-            </div>
-            <div class="button cities-btn">
-                Cities
-            </div>
-            <div class="button stat-btn">
-                Statistics
-            </div>
-    
+
+    <!-- <div class="imgcontainer">
+            <img src="img_avatar2.png" alt="Avatar" class="avatar">
+        </div> -->
+    <div class="container">
+        <div class="form">
+            <form action="http://localhost:8080/add" method="get">
+                <p>Add new book</p>
+                <div class="form-container border">
+                    <div class="input-item">
+                        <label for="title">Title</label></br>
+                        <input type="text" placeholder="Book title" name="title" required/>
+                    </div>
+                    <div class="input-item">
+                        <label for="author">Author</label></br>
+                        <input type="text" placeholder="Book Author" name="author" required/>
+                    </div>
+                    <div class="input-item input-narrow">
+                        <label for="issueYear">Issue year</label></br>
+                        <input type="number" placeholder="Issue year" name="issueYear" required/>
+                    </div>
+                    <div class="input-item input-narrow">
+                        <label for="price">Price</label></br>
+                        <input type="number" step="any" placeholder="Price" name="price" required/>
+                    </div>
+                    <div class="input-item">
+                        <button type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
         </div>
-    
-        <div class="content"></div>
-        <div class="message1">Welcome to World databese site</div>
-        <div class="message2">Chose what to do</div>
-    
-        <div class="copyright">By Volodymyr Nikolenko. Java Elementary. HW27 Odessa Hillel 2020</div>
-        <!-- <a class="download" href="data:application/xml;charset=utf-8" download="worldData.json"></a> -->
+
+
+        <div class="form">
+            <form action="http://localhost:8080/update" method="get">
+                <p>Update book</p>
+
+                <div class="border">
+                    <div class="form-container">
+                        <div class="input-item input-narrow">
+                            <label for="id">ID</label></br>
+                            <input type="number"placeholder="Id to change" name="id" required/>
+                        </div>
+                        <div class="input-item">
+                            <label for="title">Title</label></br>
+                            <input type="text" placeholder="Book title" name="title" required/>
+                        </div>
+                        <div class="input-item">
+                            <label for="author">Author</label></br>
+                            <input type="text" placeholder="Book Author" name="author" required/>
+                        </div>
+                        <div class="input-item input-narrow">
+                            <label for="issueYear">Issue year</label></br>
+                            <input type="number" inputmode="numeric" placeholder="Issue year" name="issueYear"required/>
+                        </div>
+                        <div class="input-item input-narrow">
+                            <label for="price">Price</label></br>
+                            <input type="number" step="any" placeholder="Price" name="price" required/>
+                        </div>
+                        <div class="input-item">
+                            <button type="submit">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="form">
+            <form action="http://localhost:8080/remove" method="get">
+                <p>Remove book</p>
+                <div class="form-container border">
+                    <div class="input-item">
+                        <label for="id">Id</label></br>
+                        <input type="number" placeholder="Book Id" name="id" required>
+                    </div>
+                    <div class="input-item">
+                        <button type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="form">
+            <form action="http://localhost:8080/getbyid" method="get">
+                <p>Get book</p>
+                <div class="form-container border">
+                    <div class="input-item">
+                        <label for="id">Id</label></br>
+                        <input type="number" placeholder="Book Id" name="id" required>
+                    </div>
+                    <div class="input-item">
+                        <button type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="form">
+            <form action="http://localhost:8080/getall" method="get">
+                <p>Get all books</p>
+                <div class="form-container border">
+                    <div class="input-item">
+                        <button type="submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
     </div>
+
+
+    <!-- <div class="container" style="background-color:#f1f1f1">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div> -->
+    </form>
 </body>
-<script></script>
-<script src="springone.js"></script>
 
 </html>
