@@ -23,24 +23,20 @@ public class BookServiceImpl implements BookService {
 
     @Override
     @Transactional
-    public void addBook(Book book) {
-//        bookDAO.addBook(book);
-        bookRepository.save(book);
+    public Book addBook(Book book) {
+        return bookRepository.save(book);
     }
 
     @Override
     @Transactional
-    public void updateBook(Book book) {
-//        bookDAO.updateBook(book);
+    public Book updateBook(Book book) {
         bookRepository.deleteById(book.getId());
-        bookRepository.save(book);
-
+        return bookRepository.save(book);
     }
 
     @Override
     @Transactional
     public boolean removeBook(long id) {
-//        return bookDAO.removeBook(id);
         if (bookRepository.existsById(id)) {
             bookRepository.deleteById(id);
             return true;
@@ -51,14 +47,12 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public Book getBookById(long id) {
-//        return bookDAO.getBookById(id);
-       return  (Book) bookRepository.findById(id).get();
+       return  bookRepository.findById(id).get();
     }
 
     @Override
     @Transactional
     public List<Book> getAllBook() {
-//        return bookDAO.getAllBook();
         return (List<Book>) bookRepository.findAll();
     }
 }
