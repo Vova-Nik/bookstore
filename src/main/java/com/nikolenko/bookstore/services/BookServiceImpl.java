@@ -1,25 +1,20 @@
 package com.nikolenko.bookstore.services;
 
-import com.nikolenko.bookstore.dao.BookDAO;
 import com.nikolenko.bookstore.dao.BookRepository;
 import com.nikolenko.bookstore.model.Book;
+import com.nikolenko.bookstore.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BookServiceImpl implements BookService {
 
-    private BookDAO bookDAO;
     @Autowired
     private BookRepository bookRepository;
-
-    @Autowired
-    public void setBookDAO(BookDAO bookDAO) {
-        this.bookDAO = bookDAO;
-    }
 
     @Override
     @Transactional
@@ -47,7 +42,11 @@ public class BookServiceImpl implements BookService {
     @Override
     @Transactional
     public Book getBookById(long id) {
-       return  bookRepository.findById(id).get();
+       Optional<Book> book =  bookRepository.findById(id);
+        if(book.isEmpty()){
+            return new Book();
+        }
+        return book.get();
     }
 
     @Override
@@ -55,4 +54,6 @@ public class BookServiceImpl implements BookService {
     public List<Book> getAllBook() {
         return (List<Book>) bookRepository.findAll();
     }
+
+
 }

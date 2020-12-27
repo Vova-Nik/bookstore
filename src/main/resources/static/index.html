@@ -9,114 +9,13 @@
 </head>
 
 <body>
+    <a href="http://localhost:8080/h2-console/">http://localhost:8080/h2-console/</a>
+    <div class="result book-result"></div>
+    <div class="result client-result"></div>
+    <div class="result order-result"></div>
 
-    <div class="container">
-        <div class="form">
-            <form class="addBook">
-                <p>Add new book</p>
-                <div class="form-container border">
-                    <div class="input-item">
-                        <label for="title">Title</label></br>
-                        <input type="text" placeholder="Book title" name="title" required/>
-                    </div>
-                    <div class="input-item">
-                        <label for="author">Author</label></br>
-                        <input type="text" placeholder="Book Author" name="author" required/>
-                    </div>
-                    <div class="input-item input-narrow">
-                        <label for="issueYear">Issue year</label></br>
-                        <input type="number" placeholder="Issue year" name="issueYear" required/>
-                    </div>
-                    <div class="input-item input-narrow">
-                        <label for="price">Price</label></br>
-                        <input type="number" step="any" placeholder="Price" name="price" required/>
-                    </div>
-                    <div class="input-item">
-                        <button type="submit">Submit</button>
-                    </div>
-                </div>
-            </form>
-
-        </div>
-
-        <div class="form">
-            <form class="updateBook">
-                <p>Update book</p>
-
-                <div class="border">
-                    <div class="form-container">
-                        <div class="input-item input-narrow">
-                            <label for="id">ID</label></br>
-                            <input type="number"placeholder="Id to change" name="id" required/>
-                        </div>
-                        <div class="input-item">
-                            <label for="title">Title</label></br>
-                            <input type="text" placeholder="Book title" name="title" required/>
-                        </div>
-                        <div class="input-item">
-                            <label for="author">Author</label></br>
-                            <input type="text" placeholder="Book Author" name="author" required/>
-                        </div>
-                        <div class="input-item input-narrow">
-                            <label for="issueYear">Issue year</label></br>
-                            <input type="number" inputmode="numeric" placeholder="Issue year" name="issueYear"required/>
-                        </div>
-                        <div class="input-item input-narrow">
-                            <label for="price">Price</label></br>
-                            <input type="number" step="any" placeholder="Price" name="price" required/>
-                        </div>
-                        <div class="input-item">
-                            <button type="submit">Submit</button>
-                        </div>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="form">
-            <form class="removeBook">
-                <p>Remove book</p>
-                <div class="form-container border">
-                    <div class="input-item">
-                        <label for="id">Id</label></br>
-                        <input type="number" placeholder="Book Id" name="id" required>
-                    </div>
-                    <div class="input-item">
-                        <button type="submit">Submit</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="form">
-            <form class="getById">
-                <p>Get book</p>
-                <div class="form-container border">
-                    <div class="input-item">
-                        <label for="id">Id</label></br>
-                        <input type="number" placeholder="Book Id" name="id" required>
-                    </div>
-                    <div class="input-item">
-                        <button type="submit">Submit</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-
-        <div class="form">
-            <form class="getAll">
-                <p>Get all books</p>
-                <div class="form-container border">
-                    <div class="input-item">
-                        <button type="submit">Submit</button>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    </form>
-    <div class="result"></div>
 </body>
+
+<script src="initiateData.js"></script>
 <script src="script.js"></script>
 </html>

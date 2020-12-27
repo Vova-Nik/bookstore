@@ -20,4 +20,5 @@ public class Book {
     private String issueYear;
     @Column(name = "PRICE")
     private BigDecimal price;
+
 }

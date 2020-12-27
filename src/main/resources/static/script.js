@@ -1,165 +1,157 @@
 console.log("In script");
 
 const url = "http://localhost:8080/";
-const result = document.querySelector('.result');
+const bookResult = document.querySelector('.book-result');
+showBooks();
+const clientResult = document.querySelector('.client-result');
+showClients();
 
-/***************************add******************************* */
-const form_addBook = document.querySelector('.addBook');
-form_addBook.addEventListener('submit', addBook);
+showOrders();
 
-async function addBook(event) {
-    event.preventDefault();
-    let book = {
-        title: form_addBook.elements[0].value,
-        author: form_addBook.elements[1].value,
-        issueYear: form_addBook.elements[2].value,
-        price: form_addBook.elements[3].value
-    };
-
-    let response = await fetch(url + 'add', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: JSON.stringify(book)
-    });
-    let result = await response.json();
-    console.log(result);
-    show();
-}
-/**************************update********************************* */
-const form_updateBook = document.querySelector('.updateBook');
-form_updateBook.addEventListener('submit', updateBook);
-
-async function updateBook(event) {
-    event.preventDefault();
-    let book = {
-        id: form_updateBook.elements[0].value,
-        title: form_updateBook.elements[1].value,
-        author: form_updateBook.elements[2].value,
-        issueYear: form_updateBook.elements[3].value,
-        price: form_updateBook.elements[4].value
-    };
-    let response = await fetch(url + 'add', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: JSON.stringify(book)
-    });
-    let result = await response.json();
-    console.log(result);
-    show();
-}
-
-/****************************delete************************************* */
-const form_removeBook = document.querySelector('.removeBook');
-form_removeBook.addEventListener('submit', removeBook);
-
-async function removeBook(event) {
-    event.preventDefault();
-    let book = {
-        id: form_removeBook.elements[0].value,
-        title: "",
-        author: "",
-        issueYear: "",
-        price: ""
-    };
-    let response = await fetch(url + 'remove', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: JSON.stringify(book)
-    });
-    let result = await response.text();
-    console.log(book.id, result);
-    show();
-}
-
-/****************************getById************************************* */
-const form_getById = document.querySelector('.getById');
-form_getById.addEventListener('submit', getById);
-
-async function getById(event) {
-    event.preventDefault();
-    let book = {
-        id: form_getById.elements[0].value,
-        title: "",
-        author: "",
-        issueYear: "",
-        price: ""
-    };
-    console.log(book);
-    let response = await fetch(url + 'getbyid', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json; charset=utf-8'
-        },
-        body: JSON.stringify(book)
-    });
-    let result = await response.json();
-    console.log(result);
-    show();
-}
-
-/****************************getAll************************************* */
-const form_getAll = document.querySelector('.getAll');
-form_getAll.addEventListener('submit', getAll);
-
-async function getAll(event) {
-    event.preventDefault();
-    console.log(event);
+/****************************Display books************************************* */
+async function showBooks() {
     let response = await fetch(url + 'getall', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json; charset=utf-8'
         },
     });
-    let result = await response.json();
-    console.log(result);
-    show();
-}
-
-
-/****************************Display results************************************* */
-async function show(){
-        let response = await fetch(url + 'getall', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json; charset=utf-8'
-            },
-        });
-        let books = await response.json();
-        console.log(books);
-    result.innerHTML = `<h2> Books </h2>`;
+    let books = await response.json();
+    // console.log('+++++++++++++++++', books);
+    bookResult.innerHTML = `<h2> Books </h2>`;
 
     books.forEach(el => {
         let bookstr = document.createElement('div');
         bookstr.setAttribute('class', 'bookstr');
 
-            let bookId = document.createElement('div');
-            bookstr.appendChild(bookId);
-            bookId.innerHTML = el.id;
+        let bookId = document.createElement('div');
+        bookstr.appendChild(bookId);
+        bookId.innerHTML = el.id;
 
-            let bookTitle = document.createElement('div');
-            bookstr.appendChild(bookTitle);
-            bookTitle.innerHTML = el.title;
+        let bookTitle = document.createElement('div');
+        bookstr.appendChild(bookTitle);
+        bookTitle.innerHTML = el.title;
 
-            let bookAuthor= document.createElement('div');
-            bookstr.appendChild(bookAuthor);
-            bookAuthor.innerHTML = el.author;
-        
-            let bookYear = document.createElement('div');
-            bookstr.appendChild(bookYear);
-            bookYear.innerHTML = el.issueYear;
-        
-            let bookPrice = document.createElement('div');
-            bookstr.appendChild(bookPrice);
-            bookPrice.innerHTML = el.price;
-        result.appendChild(bookstr);
+        let bookAuthor = document.createElement('div');
+        bookstr.appendChild(bookAuthor);
+        bookAuthor.innerHTML = el.author;
+
+        let bookYear = document.createElement('div');
+        bookstr.appendChild(bookYear);
+        bookYear.innerHTML = el.issueYear;
+
+        let bookPrice = document.createElement('div');
+        bookstr.appendChild(bookPrice);
+        bookPrice.innerHTML = el.price;
+        bookResult.appendChild(bookstr);
+    });
+}
+
+/****************************Display clients************************************* */
+async function showClients() {
+    let response = await fetch(url + '/client/getall', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+        },
+    });
+    let clients = await response.json();
+    // console.log('============', clients);
+    clientResult.innerHTML = `<h2> Clients </h2>`;
+
+    clients.forEach(el => {
+        let clstr = document.createElement('div');
+        clstr.setAttribute('class', 'clstr');
+
+        let id = document.createElement('div');
+        clstr.appendChild(id);
+        id.innerHTML = el.id;
+
+        let firstName = document.createElement('div');
+        clstr.appendChild(firstName);
+        firstName.innerHTML = el.firstName;
+
+        let lastName = document.createElement('div');
+        clstr.appendChild(lastName);
+        lastName.innerHTML = el.lastName;
+
+        let email = document.createElement('div');
+        clstr.appendChild(email);
+        email.innerHTML = el.email;
+
+        let dateOfBirth = document.createElement('div');
+        clstr.appendChild(dateOfBirth);
+        dateOfBirth.innerHTML = el.dateOfBirth;
+
+        clientResult.appendChild(clstr);
     });
 
+}
 
+/****************************Display orders************************************* */
+async function showOrders() {
+    let response = await fetch(url + '/order/getall', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json; charset=utf-8'
+        },
+    });
+
+    let orders = await response.json();
+    console.log('============', orders);
+    const orderResult = document.querySelector('.order-result');
+    orderResult.innerHTML = `<h2> Orders </h2>`;
+
+    orders.forEach(el => {
+        let ordstr = document.createElement('div');
+        ordstr.setAttribute('class', 'ordstr');
+
+        let id = document.createElement('div');
+        ordstr.appendChild(id);
+        id.innerHTML = el.id;
+
+        let clientFirstName = document.createElement('div');
+        ordstr.appendChild(clientFirstName);
+        clientFirstName.innerHTML = el.clientFirstName;
+
+        let clientLastName = document.createElement('div');
+        ordstr.appendChild(clientLastName);
+        clientLastName.innerHTML = el.clientLastName;
+
+        let created = document.createElement('div');
+        ordstr.appendChild(created);
+        let dt = el.created.split('T');
+        created.innerHTML = dt[0] + " - " + dt[1].split('.', 1);
+        orderResult.appendChild(ordstr);
+
+        el.bookNames.forEach(book => {
+            ordstr = document.createElement('div');
+            ordstr.setAttribute('class', 'ordered-book');
+            ordstr.innerHTML = book;
+            orderResult.appendChild(ordstr);
+        });
+
+
+    });
 
 }
+/*
+(2) [{…}, {…}]
+0:
+bookNames: Array(3)
+0: "Geck and Finn Mark and Twain"
+1: "Dumb and Blind Kingen Stewe"
+2: "Shark and Saw Stewen King"
+length: 3
+__proto__: Array(0)
+books: null
+client: 0
+clientFirstName: "Nik"
+clientLastName: "Nikolson"
+created: "2020-12-27T14:01:50.074967"
+id: 2
+__proto__: Object
+1: {client: 0, books: null, id: 2, created: "2020-12-27T14:01:50.074967", clientFirstName: "Nik", …}
+length: 2
+__proto__: Array(0)
+*/

@@ -13,6 +13,7 @@ import java.util.List;
 @CrossOrigin
 @Slf4j
 public class BookController {
+
     @Autowired
     BookService bookService;
 
@@ -39,9 +40,7 @@ public class BookController {
 
     @PostMapping(value = "/getall")
     public List<Book> getall() {
-        List<Book> books = bookService.getAllBook();
-        log.info("/getall");
-        return books;
+        return bookService.getAllBook();
     }
 
 }
