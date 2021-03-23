@@ -1,7 +1,5 @@
-# bookstore
+# bookstore project
 
-HW28 Create Spring progect.
-Project created.
-to routing points made.
-http://localhost:8080
-http://localhost:8080/rest
+Homework 28 to  to Java Elementary course in Hillel school.
+Spring Boot, Hibernate, MySQL
+
